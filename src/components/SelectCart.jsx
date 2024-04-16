@@ -76,7 +76,7 @@ function SelectCart() {
                         <img src={cart.image} alt="" style={{ width: "50%", height: "40vh", margin: "0px", padding: "2rem", borderRadius: "40px", boxShadow: " inset 1px 1px 20px 7px rgb(115 38 67)" }} />
                         <div>
                             <h1>About <span><FcAbout /></span> </h1>
-                            <h2 style={{ fontWeight: "500" }}> "{cart.description}"</h2>
+                            <h2 style={{ fontWeight: "300", fontSize:"20px" }}> "{cart.description}"</h2>
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@ function SelectCart() {
 
                     {productInCart.isProductInCart ?
                         <> <h3 style={{ color: "yellow" }}>This Product is Already in Your Cart</h3>
-                            <Link className='btn' to='/cart'> Go to Cart </Link>
+                            <Link className='button' to='/cart'> Go to Cart </Link>
                         </> :
                         <>
                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -94,7 +94,7 @@ function SelectCart() {
                                 <div style={{ fontSize: "3rem", padding: "20px", fontWeight: "900"}}>{qty}</div>
                                 <buttton onClick={Inc}> <HiPlusCircle style={{ width: "70px", height: "70px", color: "green" }} /> </buttton>
                             </div>
-                            <button className='btn' onClick={() => goToCart()}> Add To Cart </button>
+                            <button className='button' onClick={() => goToCart()}> Add To Cart </button>
                         </>
 
                     }
@@ -104,8 +104,8 @@ function SelectCart() {
                         <div style={{ fontSize: "3rem", padding: "20px", fontWeight: "900" }}>{qty}</div>
                         <buttton onClick={Inc}> <HiPlusCircle style={{ width: "70px", height: "70px", color: "green" }} /> </buttton>
                     </div>
-                    <button className='btn' onClick={() => goToCart()}> Add To Cart </button> */}
-                    {/* {!isItemInCart ?  <button className='btn' onClick={() => goToCart()}> Add To Cart </button> : null} */}
+                    <button className='button' onClick={() => goToCart()}> Add To Cart </button> */}
+                    {/* {!isItemInCart ?  <button className='button' onClick={() => goToCart()}> Add To Cart </button> : null} */}
 
                 </div>
             </div>
@@ -141,7 +141,7 @@ function SelectCart() {
                         <buttton onClick={IncQuntity}> <HiPlusCircle style={{ width: "70px", height: "70px", color: "green" }} /> </buttton>
                     </div>
 
-                    <button className='btn' style={{ backgroundColor: "green" }} onClick={() => updateCart(selectQuntity.id)}> Update </button>
+                    <button className='button' style={{ backgroundColor: "green" }} onClick={() => updateCart(selectQuntity.id)}> Update </button>
 
                 </div>
             </div>

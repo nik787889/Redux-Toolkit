@@ -29,6 +29,10 @@ const Cart = () => {
     navigate('/selectCart')
   }
 
+  const placeOrder = () => {
+    navigate('/signin')
+  }
+
   const totalItems = cartProducts.reduce((total, item) => total + item.quntity, 0);
   const totalAmount = cartProducts.reduce((total, item) => total + (item.quntity * item.price), 0);
   console.log(totalItems,totalAmount);
@@ -54,7 +58,7 @@ const Cart = () => {
       </div>
 
       <div>
-       <div className="cartCard"  style={{color:"yellow", fontWeight:"800", fontSize:"2rem"}}>
+       <div className="cartCard"  style={{color:"yellow", fontWeight:"800", fontSize:"2rem",}}>
          <span>Products</span>
          <span>Price</span>
          <span>Title</span>
@@ -66,7 +70,7 @@ const Cart = () => {
         </div>
       </div>
 
-      <div className="cartWrapper">
+      <div className="cartWrapper example">
         {
           cartProducts.map((item, index) => <div key={item.id} className='cartCard'>
 
@@ -84,8 +88,8 @@ const Cart = () => {
             <h2>${item.quntity*item.price}</h2>
 
             <div style={{ display: "flex", gap: "7rem", justifyContent: "end", marginRight: "20px" }}>
-              <button className='btn' style={{ backgroundColor: "green" }} onClick={() => updateProduct(index, item)}>Update</button>
-              <button className='btn' onClick={() => removeFromCart(index)}>Remove</button>
+              <button className='button' style={{ backgroundColor: "green" }} onClick={() => updateProduct(index, item)}>Update</button>
+              <button className='button' onClick={() => removeFromCart(index)}>Remove</button>
             </div>
 
           </div>)
@@ -96,7 +100,7 @@ const Cart = () => {
         <div className='Purchase'>
           <h1 style={{color:"yellow"}}>Total Itmes : {totalItems}</h1>
           <h1 style={{color:"yellow"}}>Total Amout :  ${totalAmount.toFixed(2)}</h1>
-          <button className='btn'>Place Order</button>
+          <button onClick={placeOrder} className='button'>Place Order</button>
         </div>
       </div>
      </div>

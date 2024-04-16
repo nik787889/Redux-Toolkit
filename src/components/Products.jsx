@@ -61,15 +61,17 @@ const Products = () => {
                 {
                     data.map((item) => {
                         return (
-                            <div className='card' key={item.id}>
+                            <div className='card' style={{ boxShadow: "20px 15px 17px 0px rgb(115 38 67)" }} key={item.id}>
 
-                                <img src={item.image} alt="{item.title}" />
+                                <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+                                    <img src={item.image} alt="{item.title}" />
+                                </div>
 
                                 <h4>{item.title}</h4>
 
-                                <h3>Price : {item.price}</h3>
+                                <h3>Price : ${item.price}</h3>
 
-                                <button className='btn' onClick={() => addToCart(item)}> Buy Now </button>
+                                <button className='button' onClick={() => addToCart(item)}> Buy Now </button>
                             </div>
                         )
                     })
@@ -87,15 +89,15 @@ const Products = () => {
                 {
                     filteredProduct.map((item) => {
                         return (
-                            <div className='card' key={item.id}>
+                            <div className='card' style={{ boxShadow: "20px 15px 17px 0px rgb(115 38 67)" }} key={item.id}>
 
                                 <img src={item.image} alt="" />
 
                                 <h4>{item.title}</h4>
 
-                                <h3>Price : {item.price}</h3>
+                                <h3>Price : ${item.price}</h3>
 
-                                <button className='btn' onClick={() => addToCart(item)}> Buy Now </button>
+                                <button className='button' onClick={() => addToCart(item)}> Buy Now </button>
                             </div>
                         )
                     })

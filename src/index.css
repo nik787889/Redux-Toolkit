@@ -7,17 +7,33 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 20px;
   /* background: rgb(128, 239, 239); */
-  background: rgb(1, 1, 37);
+  /* background: rgb(1, 1, 37); */
   /* background: rgb(200, 172, 228); */
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  overflow: scroll;
+  height: 100vh;
+}
+
+.background {
+  /* background-color: rgb(1, 1, 37); */
+  background: rgb(128, 239, 239);
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 img {
   height: 100px;
+  width: 100px;
   border-radius: 10px;
   /* mix-blend-mode: multiply; */
 }
 
 .card {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
   color: white;
   background: white;
   padding: 20px;
@@ -33,7 +49,20 @@ img {
   overflow-y: scroll;
   padding: 1rem;
   height: 50vh;
+  border-radius: 20px;
+  box-shadow: inset 1px 1px 20px 7px rgb(115 38 67);
 }
+
+.example {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+
 
 .productsWrapper {
   display: grid;
@@ -41,7 +70,7 @@ img {
   gap: 30px;
 }
 
-.btn {
+.button {
   border: none;
   outline: none;
   padding: 5px 10px;
@@ -57,7 +86,7 @@ img {
   transition: all 0.3s ease-in-out;
 }
 
-.btn:hover {
+.button:hover {
   background: #00d6ff;
   /* background: #f3075e; */
   /* color: #59d5e0; */
@@ -118,15 +147,15 @@ img {
   background: linear-gradient(135deg, #00d2ef, #550120);
 }
 
-.qty{
+.qty {
   margin-top: -10px;
   margin-bottom: -14px;
   margin-left: 80px;
   display: flex;
-  font-weight:700;
+  font-weight: 700;
   font-size: 1.5rem;
   background-color: yellow;
-  color:  red;
+  color: red;
   /* color:  rgb(1, 1, 37); */
   width: 35%;
   justify-content: center;
@@ -136,22 +165,22 @@ img {
 }
 
 .Purchase {
-    position: fixed;
-    bottom: 1rem;
-    display: grid;
-    width: 70%;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-    color: white;
-    background: #fff;
-    margin-bottom: 20px;
-    padding: 14px;
-    border: 2px solid black;
-    border-radius: 15px;
-    background: linear-gradient(135deg, #00d2ef, #550120);
-    /* box-shadow: 20px 15px 17px 0px rgb(115 38 67); */
-    box-shadow: 20px 15px 17px 0px rgb(38, 115, 97);
+  position: fixed;
+  bottom: 1rem;
+  display: grid;
+  width: 70%;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  color: white;
+  background: #fff;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 2px solid black;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #00d2ef, #550120);
+  /* box-shadow: 20px 15px 17px 0px rgb(115 38 67); */
+  box-shadow: 20px 15px 17px 0px rgb(38, 115, 97);
 }
 
 .cartCardTable {
