@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { addProducts, updateProducts } from '../redux-toolkit/cartSlice';
 import { FcAbout } from 'react-icons/fc'
-import { GiCancel } from "react-icons/gi";
+import { MdCancel } from "react-icons/md";
 import { isSelectCart } from '../redux-toolkit/selectCartSlice';
 
 function SelectCart() {
@@ -69,7 +69,7 @@ function SelectCart() {
                 <div className='card ' key={cart.id} style={{ display: "block", width: "60%" }}  >
 
                     <div style={{ display: "flex", float: "right", height: "50px", width: "50px", borderRadius: "25px", alignItems: "center" }}>
-                        <Link to="/"> <GiCancel style={{ height: "50px", width: "50px", color: "red" }} /> </Link>
+                        <Link to="/"> <MdCancel style={{ height: "50px", width: "50px", color: "red" }} /> </Link>
                     </div>
 
                     <div style={{ display: "flex", justifyContent: "center", padding: "10px", gap: "2rem" }}>
@@ -120,7 +120,7 @@ function SelectCart() {
                 <div className='card ' key={cart.id} style={{ display: "block", width: "60%" }}  >
 
                     <div style={{ display: "flex", float: "right", height: "50px", width: "50px", borderRadius: "25px", alignItems: "center" }}>
-                        <Link to="/cart"> <GiCancel style={{ height: "50px", width: "50px", color: "red" }} /> </Link>
+                        <Link to="/cart"> <MdCancel style={{ height: "50px", width: "50px", color: "red" }} /> </Link>
                     </div>
 
                     <div style={{ display: "flex", justifyContent: "center", padding: "10px", gap: "2rem" }}>

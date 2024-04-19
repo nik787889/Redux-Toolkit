@@ -1,25 +1,38 @@
 // //
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { MDBContainer, MDBCol, MDBRow, MDBBtn, MDBInput, MDBCheckbox } from 'mdb-react-ui-kit';
 import { app } from '../firebase';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
+import { loginUser } from '../redux-toolkit/loginUserSlice';
 
 const auth = getAuth(app)
+const firestore = getFirestore(app)
 
 
 function Signin() {
-
+  
   const navigate = useNavigate()
+  const dispatch = useDispatch() // for dispatch email 
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  // const userSignin = async () => {
+  //   const ref = doc(firestore, 'users', 'email')
+  //   const snap = await getDoc(ref)
+  //   console.log(snap.data())
+  // }
+
   const handleSignin = (e) => {
     e.preventDefault()
     signInWithEmailAndPassword(auth, email, password).then(resp =>  navigate('/')).catch(err => alert("Invalid Credantial"))
+    dispatch(loginUser(email))
     setEmail("")
     setPassword("")
+    // userSignin()
   }
 
   return (

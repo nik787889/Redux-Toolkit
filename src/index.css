@@ -199,8 +199,22 @@ img {
   background: linear-gradient(135deg, #00d2ef, #550120);
 }
 
-tr {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
+/*  */
+.select {
+  width: 200px;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+}
+
+.select:focus {
+  border-color: #0066ff;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
 }

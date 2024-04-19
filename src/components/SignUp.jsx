@@ -1,6 +1,8 @@
 // //
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import users from '../redux-toolkit/loginUserSlice';
 import { MDBBtn, MDBContainer, MDBCard, MDBCardBody, MDBInput, MDBIcon, MDBRow, MDBCol, MDBCheckbox } from 'mdb-react-ui-kit';
 import { app } from '../firebase';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
@@ -18,8 +20,11 @@ function SignUp() {
 
     const navigate = useNavigate()
 
+    const dispatch = useDispatch()
+
     const handleSignup = async (e) => {
         e.preventDefault()
+        // dispatch(users(fname))
         createUserWithEmailAndPassword(auth, email, password).then(resp => navigate('/signin'))
         const result = await addDoc(collection(firestore, 'users'), { FirstName: fname, LastName: lname, Email: email, Password: password })
         setFname("")
@@ -59,6 +64,7 @@ function SignUp() {
                             <button style={{ width: "100%", background: " black", color: "white", padding: "1rem" }} onClick={(e) => handleSignup(e)}>
                                 Sign Up
                             </button>
+                                
 
                             <div className="text-center">
 
@@ -79,6 +85,9 @@ function SignUp() {
                                 <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
                                     <MDBIcon fab icon='github' size="sm" />
                                 </MDBBtn>
+
+                               <br />
+                               If you already have an account <Link style={{color:"#00fdff"}} to='/signin'>sign in</Link>
 
                             </div>
 
