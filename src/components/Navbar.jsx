@@ -8,10 +8,11 @@ import { useSelector } from 'react-redux'
 import { FaCartPlus } from "react-icons/fa";
 import FilteredProducts from './FilteredProducts';
 import SidebarComp from './SidebarComp';
+import SearchProducts from './SearchProducts';
 // import SignUp from './SignUp';
 import { app } from '../firebase'
 import { getAuth } from 'firebase/auth';
-import { getFirestore, getDocs, collection, query } from 'firebase/firestore';
+import { getFirestore, getDocs, collection, query, where } from 'firebase/firestore';
 
 // // Getting Firestore Data
 const auth = getAuth(app)
@@ -41,22 +42,41 @@ const Navbar = () => {
         const queryData = await getDocs(collection(firestore, 'users'))
         let userData = null
         const data = queryData.forEach((item) => {
-
             if (item.data().Email === loggedInUser) {
                 userData = item.data().FirstName + " " + item.data().LastName
             }
         });
 
         return userData
-
     }
+
+    // const getUserName = async () => {
+    //     if (!loggedInUser) return;
+    
+    //     const usersRef = collection(firestore, "users");
+    //     const q = query(usersRef, where("Email", "==", loggedInUser));
+    //     const querySnapshot = await getDocs(q);
+    //     let userData = null;
+    //     querySnapshot.forEach((doc) => {
+    //         userData = doc.data().FirstName + " " + doc.data().LastName;
+    //     });
+    //     return userData;
+    // };
 
 
     useEffect(() => {
         getUserName().then(resp => setCurrentUser(resp))
     }, [])
 
+    // useEffect(() => {
+    //     if (loggedInUser) {
+    //         getUserName().then(setCurrentUser);
+    //     }
+    // }, [loggedInUser]); 
+
     console.log(currentUser);
+
+
     return (
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginRight: "20px", background: "linear-gradient(135deg, #00d2ef, #550120)", boxShadow: "20px 15px 17px 0px rgb(115 38 67)", position: "sticky", top: "-1px", width: "100%", borderRadius: "10px", zIndex: "1" }}>
 
@@ -69,6 +89,8 @@ const Navbar = () => {
             {/* </div> */}
 
             <h1 style={{ color: '#00d6ff' }}>{currentUser}</h1>
+
+            
 
             <div style={{ display: "flex", justifyContent: "end", width: "75%" }}>
 
@@ -84,14 +106,15 @@ const Navbar = () => {
 
 
                 {/* <IoHome className='IoHome'/> */}
+                <SearchProducts/>
                 <IoHome className='IoHome' style={{ color: isHome ? '#00d6ff' : '#f3075e' }} />
-                <Link className='navLink' style={{ marginTop: "17px" }} to='/'><h3>Home</h3></Link>
+                <Link className='navLink' style={{ color: isHome ? '#00d6ff' : '#f3075e', marginTop: "17px" }} to='/'><h3>Home</h3></Link>
 
 
                 <div style={{ display: "flex", marginLeft: "20px" }}>
                     <span style={{ color: "yellow", marginRight: "-20px" }}>{productCount.length}</span>
                     <FaCartPlus className='FaCartPlus' style={{ color: isCart ? '#00d6ff' : '#f3075e' }} />
-                    <Link className='navLink' to='/cart'><h3 style={{ marginLeft: "20px", marginTop: "17px" }}>Cart</h3></Link>
+                    <Link className='navLink' to='/cart'><h3 style={{ color: isCart ? '#00d6ff' : '#f3075e', marginLeft: "20px", marginTop: "17px" }}>Cart</h3></Link>
                 </div>
 
                 {/* <button onClick={() => getUserName()}>Ref</button> */}
@@ -102,3 +125,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+// export default React.memo(Navbar);

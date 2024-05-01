@@ -5,6 +5,7 @@ import { isProduct } from '../redux-toolkit/filterSlice';
 // import { isProduct, mansFilter } from '../redux-toolkit/filterSlice';
 import { allProducts } from '../redux-toolkit/filterSlice';
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { redirect } from 'react-router-dom';
 
 
 const FilteredProducts = () => {
@@ -21,13 +22,13 @@ const FilteredProducts = () => {
     //     if (e.target.value === 'allProducts') {
     //         e.preventDefault()
     //         dispatch(allProducts(productsData))
-    //         dispatch(isProduct(false))
+    //         dispatch(isProduct(true))
 
     //     } else {
     //         e.preventDefault()
     //         const filterData = productsData.filter(i => i.category == e.target.value)
     //         dispatch(allProducts(filterData))
-    //         dispatch(isProduct(false))
+    //         dispatch(isProduct(true))
 
     //     }
     // }
@@ -37,38 +38,37 @@ const FilteredProducts = () => {
     function allProduct(e){
         const filterData = productsData
         dispatch(allProducts(filterData))
-        dispatch(isProduct(false))
+        dispatch(isProduct(true))
         // console.log(filterData);
     }
 
     function mensProduct(e){
         const filterData = productsData.filter(i => i.category ==  "men's clothing")
         dispatch(allProducts(filterData))
-        dispatch(isProduct(false))
+        dispatch(isProduct(true))
         // console.log(filterData);
     }
 
     function womensProduct(e){
         const filterData = productsData.filter(i => i.category ==  "women's clothing")
         dispatch(allProducts(filterData))
-        dispatch(isProduct(false))
+        dispatch(isProduct(true))
         // console.log(filterData);
     }
 
     function jewelery(e){
         const filterData = productsData.filter(i => i.category ==  "jewelery")
         dispatch(allProducts(filterData))
-        dispatch(isProduct(false))
+        dispatch(isProduct(true))
         // console.log(filterData);
     }
 
     function electronics(e){
         const filterData = productsData.filter(i => i.category ==  "electronics")
         dispatch(allProducts(filterData))
-        dispatch(isProduct(false))
+        dispatch(isProduct(true))
         // console.log(filterData);
     }
-
 
 
 

@@ -16,7 +16,8 @@ body {
 
 .background {
   /* background-color: rgb(1, 1, 37); */
-  background: rgb(128, 239, 239);
+  /* background: rgb(128, 239, 239); */
+  background: #282c34;
 }
 
 body::-webkit-scrollbar {
@@ -218,3 +219,41 @@ img {
   outline: none;
   box-shadow: 0 0 10px rgba(0, 102, 255, 0.5);
 }
+
+/* Search Products Start */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  height: 40px;
+  transition: border-radius 0.5s ease, border 0.5s ease; 
+}
+
+.search-container:hover {
+  border-radius: 25px;
+  border: 2px solid #00d6ff;
+}
+
+.search-icon {
+  color: #ccc;
+  margin-right: 10px;
+  font-size: 30px;
+}
+
+.search-input {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px 0;
+  font-size: 20px;
+  color: #ccc;
+  background-color: transparent;
+}
+
+.search-input:hover {
+  color: #00d6ff;
+}
+/* Search Products End */

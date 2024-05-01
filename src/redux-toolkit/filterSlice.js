@@ -9,7 +9,9 @@ const filterSlice = createSlice({
 
     initialState: {
         filterData: [],
-        isProduct: true
+        isProduct: false,
+        isSearch:false,
+        searchQuery: ""
     },
 
     reducers: {
@@ -20,7 +22,15 @@ const filterSlice = createSlice({
 
         isProduct(state, action) {
             state.isProduct = action.payload
-        }
+        },
+
+        isSearch(state, action){
+            state.isSearch = action.payload
+        },
+
+        setSearchQuery(state, action) {
+            state.searchQuery = action.payload
+          },
 
     }
 
@@ -29,5 +39,5 @@ const filterSlice = createSlice({
 
 
 
-export const { allProducts, isProduct } = filterSlice.actions
+export const { allProducts, isProduct, isSearch, setSearchQuery } = filterSlice.actions
 export default filterSlice.reducer

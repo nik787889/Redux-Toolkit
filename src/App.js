@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
+import Navbar from './components/Navbar';
 // import Navbar from './components/Navbar';
 import SelectCart from './components/SelectCart';
 import SignUp from './components/SignUp';
@@ -13,7 +14,6 @@ import SidebarComp from './components/SidebarComp';
 // import { useDispatch, useSelector } from 'react-redux'
 
 function App() {
-
 
 
   return (

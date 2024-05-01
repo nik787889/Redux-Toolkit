@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 import { useNavigate } from 'react-router-dom';
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
-import { removeProducts } from '../redux-toolkit/cartSlice'
+import { removeProducts, clearCart } from '../redux-toolkit/cartSlice'
 import { isSelectCart, selectCart, updateCart } from '../redux-toolkit/selectCartSlice'
 import Navbar from '../components/Navbar';
 
@@ -15,6 +15,7 @@ const Cart = () => {
   const navigate = useNavigate()
 
   const cartProducts = useSelector((state) => state.cart)
+  // console.log(cartProducts);
 
   const dispatch = useDispatch()
 
@@ -29,19 +30,25 @@ const Cart = () => {
     navigate('/selectCart')
   }
 
+  // // This is for Clear The Cart
+  const clearCartHandler = () => {
+    dispatch(clearCart())
+  }
+
+
   const placeOrder = () => {
     navigate('/signin')
   }
 
   const totalItems = cartProducts.reduce((total, item) => total + item.quntity, 0);
   const totalAmount = cartProducts.reduce((total, item) => total + (item.quntity * item.price), 0);
-  console.log(totalItems,totalAmount);
+  console.log(totalItems, totalAmount);
 
   if (cartProducts.length === 0) {
     return (
       <div>
         <Navbar />
-        <h2 style={{ display:"flex", justifyContent:"center", alignItems:"center", height:"80vh", color:"#00d6ff" }}>Your cart is empty</h2>
+        <h2 style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh", color: "#00d6ff" }}>Your cart is empty</h2>
       </div>
     );
   }
@@ -58,15 +65,15 @@ const Cart = () => {
       </div>
 
       <div>
-       <div className="cartCard"  style={{color:"yellow", fontWeight:"800", fontSize:"2rem",}}>
-         <span>Products</span>
-         <span>Price</span>
-         <span>Title</span>
-         <span>Total Price</span>
-         <span style={{display: "flex", gap: "7rem", justifyContent: "end", marginRight: "20px"}}>
-           <span>Update</span>
-           <span>Remove</span>
-         </span>
+        <div className="cartCard" style={{ color: "yellow", fontWeight: "800", fontSize: "2rem", }}>
+          <span>Products</span>
+          <span>Price</span>
+          <span>Title</span>
+          <span>Total Price</span>
+          <span style={{ display: "flex", gap: "7rem", justifyContent: "end", marginRight: "20px" }}>
+            <span>Update</span>
+            <span>Remove</span>
+          </span>
         </div>
       </div>
 
@@ -76,7 +83,7 @@ const Cart = () => {
 
             <div>
               <div className='qty'>{item.quntity}</div>
-              <img style={{width:"100px"}} src={item.image} />
+              <img style={{ width: "100px" }} src={item.image} />
             </div>
 
             <h2>${item.price}</h2>
@@ -85,7 +92,7 @@ const Cart = () => {
               <h2>{item.title}</h2>
             </marquee>
 
-            <h2>${item.quntity*item.price}</h2>
+            <h2>${item.quntity * item.price}</h2>
 
             <div style={{ display: "flex", gap: "7rem", justifyContent: "end", marginRight: "20px" }}>
               <button className='button' style={{ backgroundColor: "green" }} onClick={() => updateProduct(index, item)}>Update</button>
@@ -96,14 +103,18 @@ const Cart = () => {
         }
       </div>
 
-       <div  style={{ width: "100%", display: "flex", justifyContent: "center", alignItems:"end", marginTop: "2rem" }}>
+      <div>
+        <button className='button' onClick={()=>clearCartHandler()}>Clear Cart</button>
+      </div>
+
+      <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "end", marginTop: "2rem" }}>
         <div className='Purchase'>
-          <h1 style={{color:"yellow"}}>Total Itmes : {totalItems}</h1>
-          <h1 style={{color:"yellow"}}>Total Amout :  ${totalAmount.toFixed(2)}</h1>
+          <h1 style={{ color: "yellow" }}>Total Itmes : {totalItems}</h1>
+          <h1 style={{ color: "yellow" }}>Total Amout :  ${totalAmount.toFixed(2)}</h1>
           <button onClick={placeOrder} className='button'>Place Order</button>
         </div>
       </div>
-     </div>
+    </div>
   )
 }
 
