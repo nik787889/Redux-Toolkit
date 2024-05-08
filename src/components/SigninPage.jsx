@@ -29,9 +29,12 @@ function Signin() {
   const handleSignin = (e) => {
     e.preventDefault()
     signInWithEmailAndPassword(auth, email, password).then(resp =>  navigate('/')).catch(err => alert("Invalid Credantial"))
-    dispatch(loginUser(email))
     setEmail("")
     setPassword("")
+    setTimeout(()=>{
+
+      dispatch(loginUser(email))
+    }, 1000)
     // userSignin()
   }
 

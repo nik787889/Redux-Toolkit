@@ -11,16 +11,14 @@ import { FcAbout } from 'react-icons/fc'
 import { MdCancel } from "react-icons/md";
 import { isSelectCart } from '../redux-toolkit/selectCartSlice';
 
-function SelectCart() {
-
-
+function SelectCart({route}) {
+    const {state} = useLocation()
+    // console.log(state);
     const dispatch = useDispatch()
-
     const selectCart = useSelector(state => state.selectCart.cartItem)
     const selectUpdateCart = useSelector(state => state.selectCart.isSelectCart)
     const selectQuntity = useSelector(state => state.selectCart.cartItem)
     const selectCartProducts = useSelector(state => state.cart)
-
 
     let cartProduct = selectCartProducts.filter(item => item.id === selectCart.id)
     const productInCart = cartProduct[0] || []
@@ -43,8 +41,13 @@ function SelectCart() {
     }
 
     const updateCart = (item) => {
-        dispatch(updateProducts(item))
-        dispatch(addProducts({ cart: cart, quntity: updateQty, isProductInCart: true }))
+
+        let a = [...selectCartProducts]
+        a.splice(state.index, 1, {...cart, quntity: updateQty})
+
+        dispatch(updateProducts(a))
+        // dispatch(updateProducts(item))
+        // dispatch(addProducts({ cart: cart, quntity: updateQty, isProductInCart: true }))
         setCart(cart)
         navigate('/cart')
     }

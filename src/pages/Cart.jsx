@@ -1,8 +1,7 @@
 
 // //
 
-import React, { useState } from 'react'
-import Table from 'react-bootstrap/Table';
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { FaCartPlus } from "react-icons/fa";
 import { useSelector, useDispatch } from 'react-redux'
@@ -24,10 +23,9 @@ const Cart = () => {
   }
 
   const updateProduct = (index, product) => {
-    // console.log(index, product)
     dispatch(updateCart(product))
     dispatch(isSelectCart(true))
-    navigate('/selectCart')
+    navigate('/selectCart', { state: { index: index,} })
   }
 
   // // This is for Clear The Cart
@@ -35,29 +33,26 @@ const Cart = () => {
     dispatch(clearCart())
   }
 
-
   const placeOrder = () => {
     navigate('/signin')
   }
 
   const totalItems = cartProducts.reduce((total, item) => total + item.quntity, 0);
   const totalAmount = cartProducts.reduce((total, item) => total + (item.quntity * item.price), 0);
-  console.log(totalItems, totalAmount);
+
 
   if (cartProducts.length === 0) {
     return (
       <div>
-        <Navbar />
         <h2 style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh", color: "#00d6ff" }}>Your cart is empty</h2>
       </div>
     );
   }
 
-
   return (
     <div>
 
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div style={{ display: "flex", alignItems: "center", gap: "10px", width: "100%" }}>
         <FaCartPlus style={{ height: "44px", width: "22px", color: "#f3075e" }} />
@@ -79,6 +74,7 @@ const Cart = () => {
 
       <div className="cartWrapper example">
         {
+          
           cartProducts.map((item, index) => <div key={item.id} className='cartCard'>
 
             <div>
@@ -104,7 +100,7 @@ const Cart = () => {
       </div>
 
       <div>
-        <button className='button' onClick={()=>clearCartHandler()}>Clear Cart</button>
+        <button className='button' onClick={() => clearCartHandler()}>Clear Cart</button>
       </div>
 
       <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "end", marginTop: "2rem" }}>

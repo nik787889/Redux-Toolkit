@@ -7,12 +7,15 @@ import { AiOutlineBars } from "react-icons/ai";
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
 import { useNavigate } from 'react-router-dom';
 import FilteredProducts from './FilteredProducts';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux-toolkit/loginUserSlice';
 
 const SidebarComp = () => {
 
     const navigate = useNavigate()
 
     const [toggled, setToggled] = useState(false);
+    let dispatch = useDispatch()
 
     return (
         <div>
@@ -25,8 +28,11 @@ const SidebarComp = () => {
                         <FilteredProducts/>
                         <MenuItem onClick={() => navigate('/cart')}> Cart</MenuItem>
                         <MenuItem onClick={() => navigate('/signin')}> Signin</MenuItem>
-                        <MenuItem onClick={() => navigate('/signup')}> Logout</MenuItem>
+                        <MenuItem onClick={() =>{
+                            dispatch(loginUser(null))
+                             navigate('/signup')}}> Logout</MenuItem>
                     </Menu>
+
                 </Sidebar>
                 <main style={{ display: 'flex', padding: 10 }}>
                     <div>
