@@ -68,34 +68,34 @@ function SelectCart({route}) {
 
         return (
 
-            <div style={{ padding: "20px 10px 0 10px", display: "flex", justifyContent: "center", width: "100%" }}>
-                <div className='card ' key={cart.id} style={{ display: "block", width: "60%" }}  >
+            <div style={{ display: "flex", justifyContent: "center", alignItems:"center", width: "100%" }}>
+                <div className='card ' key={cart.id} style={{ display: "block", width: "45rem", marginTop:"3rem" }}  >
 
-                    <div style={{ display: "flex", float: "right", height: "50px", width: "50px", borderRadius: "25px", alignItems: "center" }}>
-                        <Link to="/"> <MdCancel style={{ height: "50px", width: "50px", color: "red" }} /> </Link>
+                    <div style={{ display: "flex", float: "right", height: "25px", width: "25px", borderRadius: "25px", alignItems: "center" }}>
+                        <Link to="/"> <MdCancel style={{ height: "35px", width: "35px", color: "red" }} /> </Link>
                     </div>
 
                     <div style={{ display: "flex", justifyContent: "center", padding: "10px", gap: "2rem" }}>
-                        <img src={cart.image} alt="" style={{ width: "50%", height: "40vh", margin: "0px", padding: "2rem", borderRadius: "40px", boxShadow: " inset 1px 1px 20px 7px rgb(115 38 67)" }} />
+                        <img src={cart.image} alt="" style={{ width: "15rem", height: "15rem", margin: "0px", padding: "2rem", borderRadius: "40px", boxShadow: " inset 1px 1px 20px 7px rgb(115 38 67)" }} />
                         <div>
-                            <h1>About <span><FcAbout /></span> </h1>
-                            <h2 style={{ fontWeight: "300", fontSize:"20px" }}> "{cart.description}"</h2>
+                            <h3>About <span><FcAbout /></span> </h3>
+                            <h5 style={{ fontWeight: "300", fontSize:"20px" }}> "{cart.description}"</h5>
                         </div>
                     </div>
 
-                    <h2>{cart.title}</h2>
+                    <h5>{cart.title}</h5>
 
-                    <div style={{ fontSize: "2rem", fontWeight: "900" }}>Price: ${cart.price}</div>
+                    <div style={{ fontSize: "1rem", fontWeight: "900", color:"#a2f8a2" }}>Price: ${cart.price}</div>
 
                     {productInCart.isProductInCart ?
-                        <> <h3 style={{ color: "yellow" }}>This Product is Already in Your Cart</h3>
+                        <> <h5 style={{ color: "yellow" }}>This Product is Already in Your Cart</h5>
                             <Link className='button' to='/cart'> Go to Cart </Link>
                         </> :
                         <>
                             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                <buttton onClick={Dec}> <HiMinusCircle style={{ width: "70px", height: "70px" }} color='red' /> </buttton>
-                                <div style={{ fontSize: "3rem", padding: "20px", fontWeight: "900"}}>{qty}</div>
-                                <buttton onClick={Inc}> <HiPlusCircle style={{ width: "70px", height: "70px", color: "green" }} /> </buttton>
+                                <buttton onClick={Dec}> <HiMinusCircle style={{ width: "40px", height: "40px" }} color='red' /> </buttton>
+                                <div style={{ fontSize: "1.5rem", padding: "20px", fontWeight: "900"}}>{qty}</div>
+                                <buttton onClick={Inc}> <HiPlusCircle style={{ width: "40px", height: "40px", color: "green" }} /> </buttton>
                             </div>
                             <button className='button' onClick={() => goToCart()}> Add To Cart </button>
                         </>
@@ -119,29 +119,29 @@ function SelectCart({route}) {
 
         return (
 
-            <div style={{ padding: "20px 10px 0 10px", display: "flex", justifyContent: "center", width: "100%" }}>
-                <div className='card ' key={cart.id} style={{ display: "block", width: "60%" }}  >
+            <div style={{ display: "flex", justifyContent: "center", alignItems:"center", width: "100%" }}>
+                <div className='card ' key={cart.id} style={{ display: "block", width: "45rem", marginTop:"3rem" }}  >
 
-                    <div style={{ display: "flex", float: "right", height: "50px", width: "50px", borderRadius: "25px", alignItems: "center" }}>
-                        <Link to="/cart"> <MdCancel style={{ height: "50px", width: "50px", color: "red" }} /> </Link>
+                    <div style={{ display: "flex", float: "right", height: "25px", width: "25px", borderRadius: "25px", alignItems: "center"}}>
+                        <Link to="/cart"> <MdCancel style={{ height: "35px", width: "35px", color: "red" }} /> </Link>
                     </div>
 
                     <div style={{ display: "flex", justifyContent: "center", padding: "10px", gap: "2rem" }}>
-                        <img src={cart.image} alt="" style={{ width: "50%", height: "40vh", margin: "0px", padding: "2rem", borderRadius: "40px", boxShadow: " inset 1px 1px 20px 7px rgb(115 38 67)" }} />
+                        <img src={cart.image} alt="" style={{ width: "15rem", height: "15rem", margin: "0px", padding: "2rem", borderRadius: "40px", boxShadow: " inset 1px 1px 20px 7px rgb(115 38 67)" }} />
                         <div>
-                            <h1>About <span><FcAbout /></span> </h1>
-                            <h2 style={{ fontWeight: "500" }}> "{cart.description}"</h2>
+                            <h3>About <span><FcAbout /></span> </h3>
+                            <h5 style={{ fontWeight: "300", fontSize:"20px" }}> "{cart.description}"</h5>
                         </div>
                     </div>
 
-                    <h2>{cart.title}</h2>
+                    <h5>{cart.title}</h5>
 
-                    <div style={{ fontSize: "2rem", fontWeight: "900" }}>Price: ${cart.price}</div>
+                    <div style={{ fontSize: "1rem", fontWeight: "900", color:"#a2f8a2" }}>Price: ${cart.price}</div>
 
                     <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <buttton onClick={DecQuntity}> <HiMinusCircle style={{ width: "70px", height: "70px" }} color='red' /> </buttton>
-                        <div style={{ fontSize: "3rem", padding: "20px", fontWeight: "900" }}>{updateQty}</div>
-                        <buttton onClick={IncQuntity}> <HiPlusCircle style={{ width: "70px", height: "70px", color: "green" }} /> </buttton>
+                        <buttton onClick={DecQuntity}> <HiMinusCircle style={{ width: "40px", height: "40px", color:'red' }} /> </buttton>
+                        <div style={{  fontSize: "1.5rem", padding: "20px", fontWeight: "900" }}>{updateQty}</div>
+                        <buttton onClick={IncQuntity}> <HiPlusCircle style={{ width: "40px", height: "40px" , color: "green" }} /> </buttton>
                     </div>
 
                     <button className='button' style={{ backgroundColor: "green" }} onClick={() => updateCart(selectQuntity.id)}> Update </button>

@@ -27,7 +27,7 @@ const SidebarComp = () => {
                         <MenuItem onClick={() => navigate('/')}> Home</MenuItem>
                         <FilteredProducts/>
                         <MenuItem onClick={() => navigate('/cart')}> Cart</MenuItem>
-                        <MenuItem onClick={() => navigate('/signin')}> Signin</MenuItem>
+                        {/* <MenuItem onClick={() => navigate('/signin')}> Signin</MenuItem> */}
                         <MenuItem onClick={() =>{
                             dispatch(loginUser(null))
                              navigate('/signup')}}> Logout</MenuItem>

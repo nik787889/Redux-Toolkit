@@ -49,13 +49,9 @@ const renderName = useMemo(() => (
 
     <div>
 
-      {/* <h1 className="heading">Home</h1> */}
-
       <section>
 
-
-
-        <h1 style={{ color: "#f3075e" }}> <MdOutlineProductionQuantityLimits /> Products</h1>
+        <h4 style={{ color: "#f3075e", marginTop:"15px" }}> <MdOutlineProductionQuantityLimits /> Products</h4>
 
         <Products />
 

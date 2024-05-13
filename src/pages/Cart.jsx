@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { removeProducts, clearCart } from '../redux-toolkit/cartSlice'
 import { isSelectCart, selectCart, updateCart } from '../redux-toolkit/selectCartSlice'
 import Navbar from '../components/Navbar';
+import { LiaEdit } from "react-icons/lia";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 const Cart = () => {
 
@@ -18,7 +20,8 @@ const Cart = () => {
 
   const dispatch = useDispatch()
 
-  const removeFromCart = (itemId) => {
+  const removeFromCart = (itemId, item) => {
+    alert(`Removing ${item.title} from your cart`)
     dispatch(removeProducts(itemId))
   }
 
@@ -56,16 +59,16 @@ const Cart = () => {
 
       <div style={{ display: "flex", alignItems: "center", gap: "10px", width: "100%" }}>
         <FaCartPlus style={{ height: "44px", width: "22px", color: "#f3075e" }} />
-        <h2 style={{ color: "#f3075e" }}>  Cart </h2>
+        <h4 style={{ color: "#f3075e", marginTop:"10px" }}>  Cart </h4>
       </div>
 
       <div>
-        <div className="cartCard" style={{ color: "yellow", fontWeight: "800", fontSize: "2rem", }}>
+        <div className="cartCard" style={{ color: "yellow", fontWeight: "800", fontSize: "1.3rem", }}>
           <span>Products</span>
           <span>Price</span>
           <span>Title</span>
           <span>Total Price</span>
-          <span style={{ display: "flex", gap: "7rem", justifyContent: "end", marginRight: "20px" }}>
+          <span style={{ display: "flex", gap: "6rem", justifyContent: "end", marginRight: "20px" }}>
             <span>Update</span>
             <span>Remove</span>
           </span>
@@ -79,20 +82,22 @@ const Cart = () => {
 
             <div>
               <div className='qty'>{item.quntity}</div>
-              <img style={{ width: "100px" }} src={item.image} />
+              <img style={{ height:"50px", width: "50px" }} src={item.image} />
             </div>
 
-            <h2>${item.price}</h2>
+            <h5>${item.price}</h5>
 
             <marquee>
-              <h2>{item.title}</h2>
+              <h5>{item.title}</h5>
             </marquee>
 
-            <h2>${item.quntity * item.price}</h2>
+            <h5>${item.quntity * item.price}</h5>
 
             <div style={{ display: "flex", gap: "7rem", justifyContent: "end", marginRight: "20px" }}>
-              <button className='button' style={{ backgroundColor: "green" }} onClick={() => updateProduct(index, item)}>Update</button>
-              <button className='button' onClick={() => removeFromCart(index)}>Remove</button>
+              {/* <button className='button' style={{ backgroundColor: "green" }} onClick={() => updateProduct(index, item)}>Update</button>
+              <button className='button' onClick={() => removeFromCart(index)}>Remove</button> */}
+              <h1 className='update-btn' onClick={() => updateProduct(index, item)}><LiaEdit/></h1>
+              <h1 className='delete-btn' onClick={() => removeFromCart(index, item)}><RiDeleteBin5Line/></h1>
             </div>
 
           </div>)
@@ -105,8 +110,8 @@ const Cart = () => {
 
       <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "end", marginTop: "2rem" }}>
         <div className='Purchase'>
-          <h1 style={{ color: "yellow" }}>Total Itmes : {totalItems}</h1>
-          <h1 style={{ color: "yellow" }}>Total Amout :  ${totalAmount.toFixed(2)}</h1>
+          <h5 style={{ color: "yellow" }}>Total Itmes : {totalItems}</h5>
+          <h5 style={{ color: "yellow" }}>Total Amout :  ${totalAmount.toFixed(2)}</h5>
           <button onClick={placeOrder} className='button'>Place Order</button>
         </div>
       </div>
